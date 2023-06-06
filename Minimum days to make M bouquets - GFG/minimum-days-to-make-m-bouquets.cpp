@@ -37,12 +37,12 @@ class Solution {
         
         while(low<=high)
         {
-        int mid=(low+high)/2;
-        
-        if(noOfbouquetWithMidAsBloomDay(bloomDay,M,K,mid)<M)
-        low=mid+1;
-        else
-        high=mid-1;
+            int mid=(low+high)/2;
+            
+            if(noOfbouquetWithMidAsBloomDay(bloomDay,M,K,mid)<M)
+            low=mid+1;
+            else
+            high=mid-1;
         
         }
         return low;
