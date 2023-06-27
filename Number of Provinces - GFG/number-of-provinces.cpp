@@ -27,7 +27,6 @@ class Solution {
                 temp += 1;
                 dfs(i, adj, V, vis);
             }
-            else temp += 0;
         }
         return temp;
     }
