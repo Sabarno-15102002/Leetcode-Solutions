@@ -21,6 +21,7 @@ struct Item{
 class Solution
 {
     public:
+    //Function to get the maximum total value in the knapsack.
     static bool cmp(struct Item a, struct Item b)
     {
         double r1 = (double)a.value / (double)a.weight;
