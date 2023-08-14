@@ -1,4 +1,4 @@
-// { Driver Code Starts
+//{ Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -36,7 +36,8 @@ while(t--)
 	ss->sort();
 	printStack(ss->s);
 }
-}// } Driver Code Ends
+}
+// } Driver Code Ends
 
 
 /*The structure of the class is
