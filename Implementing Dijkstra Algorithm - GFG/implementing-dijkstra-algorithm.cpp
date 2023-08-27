@@ -3,47 +3,41 @@
 using namespace std;
 
 // } Driver Code Ends
-
 class Solution
 {
-public:
-//Function to find the shortest distance of all the vertices
+	public:
+	//Function to find the shortest distance of all the vertices
     //from the source vertex S.
     vector <int> dijkstra(int V, vector<vector<int>> adj[], int S)
     {
-       
-        // a vector storing shortest distance of each node from vertex
-        vector<int>dist(V,INT_MAX);
+        // Code here
+        vector<int> dist(V,1e9);
         
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
- 
-        dist[S]=0;
-// TAKING DISTANCE OF SOURCE IS EQUAL TO 0
-       
-        pq.push({0, S});
-  //PUSHING VALUE OF DISTANCE ALONG WITH RANDOM CURRENT NODE
-        
-        while(!pq.empty()){
-            int node=pq.top().second;  // current node
-            int dis=pq.top().first;
-            pq.pop();//distance or wieght of that node
+        set<pair<int,int>> st;
+        dist[S] = 0;
+        st.insert({0,S});
+        while(!st.empty()){
+            auto it = *(st.begin());
+            int node = it.second;
+            int dis = it.first;
+            st.erase(it);
             
             for(auto it : adj[node]){
-                int adjnode=it[0];  // this means we are taking elemetnt 2nd of {1,3} which is itself a node[0] for source 2 
-                int adjweight=it[1];  
+                int adjNode = it[0];
+                int edgeW = it[1];
                 
-                if(dis + adjweight < dist[adjnode]) {
-                    dist[adjnode]=dis + adjweight;
-                    pq.push({dist[adjnode],adjnode});
+                if(dis + edgeW < dist[adjNode]){
+                    if(dist[adjNode] != 1e9){
+                        st.erase({dist[adjNode],adjNode});
+                    }
+                    dist[adjNode] = dis + edgeW; 
+                    st.insert({dist[adjNode], adjNode});
                 }
             }
         }
-        
         return dist;
-       
     }
 };
-
 
 
 //{ Driver Code Starts.
